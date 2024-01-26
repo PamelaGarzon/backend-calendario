@@ -43,7 +43,6 @@ public class SecurityUserFilter extends OncePerRequestFilter {
       }
     }
 
-    // cadeia de filtros da aplicação e aplica na request e response
     filterChain.doFilter(request, response);
   }
 

@@ -19,7 +19,6 @@ import br.com.pamela.calendario.modules.user.repositories.UserRepository;
 @Service
 public class AuthUserUseCase {
 
-  // Palavra chave para gerar o token
   @Value("${security.token.secret}")
   private String secretKey;
 
@@ -39,7 +38,6 @@ public class AuthUserUseCase {
       throw new UserInvalidLoginException();
     }
 
-    // Aqui vai criar o algotimo para criar o token a partir de uma palavra chave
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
     var token = JWT.create()
         .withIssuer("user")

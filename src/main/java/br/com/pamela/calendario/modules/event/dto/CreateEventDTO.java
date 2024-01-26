@@ -1,6 +1,5 @@
 package br.com.pamela.calendario.modules.event.dto;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 

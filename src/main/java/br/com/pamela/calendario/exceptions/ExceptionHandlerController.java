@@ -21,7 +21,6 @@ public class ExceptionHandlerController {
     this.messageSource = message;
   }
 
-  // Entender porque é uma lista de erros, entender o que ta acontecendo
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<List<ErrorMessageDTO>> handleMethodArgumentNotValidException(
       MethodArgumentNotValidException e) {

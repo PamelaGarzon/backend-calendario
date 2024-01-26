@@ -3,8 +3,7 @@ package br.com.pamela.calendario.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -30,18 +29,16 @@ public class SecurityConfig {
 
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    // desabilita pois o token já é uma proteção contra ataque
     http
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeRequests(auth -> {
           auth
-              .requestMatchers("/user", "/user/auth").permitAll()
+              .requestMatchers("/user/create", "/user/auth").permitAll()
               .requestMatchers(SWAGGER_LIST).permitAll();
           auth.anyRequest().authenticated();
         })
         .httpBasic(withDefaults())
         .addFilterBefore(securityUserFilter, BasicAuthenticationFilter.class);
-    // security filter -> filtro de segurança
     return http.build();
   }
 

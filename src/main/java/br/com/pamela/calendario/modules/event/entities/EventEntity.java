@@ -1,8 +1,7 @@
 package br.com.pamela.calendario.modules.event.entities;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -18,7 +17,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import java.sql.Timestamp;
@@ -35,12 +33,10 @@ public class EventEntity {
   private String description;
 
   @NotNull(message = "Campo obrigatorio")
-  @Future(message = "A data de início não pode ser uma data passada.")
   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
   private LocalDateTime startDateTime;
 
   @NotNull(message = "Campo obrigatorio")
-  @Future(message = "A data de término não pode ser uma data passada.")
   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
   private LocalDateTime endDateTime;
 
